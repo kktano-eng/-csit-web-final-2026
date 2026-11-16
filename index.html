@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechHub 2026 | Campus Gear & Tech Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="brand">Tech<span>Hub</span></a>
+
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search laptops, audio, accessories..." />
+      </div>
+
+      <button id="cart-btn" class="cart-trigger" aria-label="Open Cart">
+        🛒 Cart <span id="cart-count" class="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="pill">CSIT Finals 2026 • E-Commerce Edition</span>
+        <h1>Upgrade Your Study & Dev Setup.</h1>
+        <p>Curated hardware, mechanical keyboards, and workspace essentials engineered for CS & IT students.</p>
+        <a href="#catalog" class="btn btn-primary">Shop Catalog</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <strong>100%</strong>
+          <span>Vanilla JS Cart</span>
+        </div>
+        <div class="stat-box">
+          <strong>24/7</strong>
+          <span>LocalStorage Sync</span>
+        </div>
+        <div class="stat-box">
+          <strong>Fast</strong>
+          <span>Live Filter & Sort</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <main id="catalog" class="container section">
+    <div class="toolbar">
+      <div class="tabs" id="category-tabs">
+        <button class="tab active" data-cat="all">All Gear</button>
+        <button class="tab" data-cat="peripherals">Peripherals</button>
+        <button class="tab" data-cat="audio">Audio</button>
+        <button class="tab" data-cat="workspace">Workspace</button>
+      </div>
+
+      <select id="sort-select" class="sort-select" aria-label="Sort products">
+        <option value="default">Sort: Featured</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+      </select>
+    </div>
+
+    <!-- Products injected here via JavaScript -->
+    <div id="product-grid" class="product-grid"></div>
+    <p id="empty-msg" class="empty-msg hidden">No products match your search.</p>
+  </main>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div id="cart-overlay" class="overlay hidden"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button id="close-cart" class="close-btn">&times;</button>
+    </div>
+
+    <div id="cart-items" class="cart-items">
+      <!-- Cart items injected via JS -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total:</span>
+        <strong id="cart-total">₱0.00</strong>
+      </div>
+      <button id="checkout-btn" class="btn btn-primary full-width">Proceed to Checkout</button>
+      <p id="checkout-msg" class="checkout-msg"></p>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>CSIT Web Finals 2026 • Interactive E-Commerce Storefront</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
