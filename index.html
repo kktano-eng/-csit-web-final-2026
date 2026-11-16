@@ -1,104 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechHub 2026 | Campus Gear & Tech Store</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khristian | Solar Archive Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Sticky Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#" class="brand">Tech<span>Hub</span></a>
+<canvas id="stars" aria-hidden="true"></canvas>
 
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search laptops, audio, accessories..." />
+
+<header>
+  <div class="bar">
+    <a class="logo" href="#about">☉ KHRISTIAN</a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">MENU</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academic">Academic</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#values">Values</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section id="about" class="hero">
+    <div>
+      <div class="pwrap">
+        <div class="orbit"></div>
+        <div class="portrait">
+          <span aria-hidden="true">K</span>
+          <!-- Replace portrait.jpg with your photo file; K shows if it is missing -->
+          <img src="portrait.jpg" alt="Portrait of Khristian" onerror="this.remove()">
+        </div>
       </div>
-
-      <button id="cart-btn" class="cart-trigger" aria-label="Open Cart">
-        🛒 Cart <span id="cart-count" class="cart-badge">0</span>
-      </button>
+      <div class="sub">SUBJECT: KHRISTIAN // BSIT</div>
     </div>
-  </header>
+    <div>
+      <p class="tag">Mission Log 001 // Profile</p>
+      <h1>Hello, world.<br><span class="grad">I’m Khristian.</span></h1>
+      <p>I’m a BSIT student at the University of San Agustin in Iloilo City. I love making websites that look nice and are easy to use.</p>
+      <p>I start with an idea, plan how it will look, and then write the code. I keep fixing and improving it until it works well on phones and computers. When I find a bug, I don’t give up. I see it as a chance to learn something new.</p>
+      <p>Right now, I am learning more JavaScript and trying out game making in my free time. I like working with others, asking questions, and getting better every day. Welcome to my portfolio. It shows what I have learned so far and what I want to do next.</p>
+      <a class="cta" href="#projects">VIEW PROJECTS ↓</a>
+    </div>
+  </section>
 
-  <!-- Hero Banner -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <span class="pill">CSIT Finals 2026 • E-Commerce Edition</span>
-        <h1>Upgrade Your Study & Dev Setup.</h1>
-        <p>Curated hardware, mechanical keyboards, and workspace essentials engineered for CS & IT students.</p>
-        <a href="#catalog" class="btn btn-primary">Shop Catalog</a>
+
+  <section id="academic">
+    <p class="tag">Mission Log 002</p>
+    <h2>Academic Background</h2>
+    <div class="timeline">
+      <article class="card">
+        <span class="meta">2022 – Present</span>
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p>University of San Agustin, Iloilo City · Expected graduation: 2026 <em>(edit)</em></p>
+      </article>
+      <article class="card">
+        <span class="meta">Senior High School</span>
+        <h3>Your SHS Track / Strand <em>(edit)</em></h3>
+        <p>Name of school · Year graduated</p>
+      </article>
+    </div>
+    <h3 style="margin-top:2rem">Relevant Coursework</h3>
+    <ul class="chips">
+      <li>Web Development</li><li>Programming Fundamentals</li><li>Data Structures</li>
+      <li>Database Management</li><li>Networking</li><li>Systems Analysis &amp; Design</li>
+    </ul>
+  </section>
+
+
+  <section id="achievements">
+    <p class="tag">Mission Log 003</p>
+    <h2>Notable Achievements</h2>
+    <div class="grid">
+      <article class="card"><span class="meta">Academic</span><h3>Dean’s Lister</h3><p>Replace with your honor and semester.</p></article>
+      <article class="card"><span class="meta">Certification</span><h3>freeCodeCamp: Responsive Web Design</h3><p>Replace with a course you completed.</p></article>
+      <article class="card"><span class="meta">Competition</span><h3>Hackathon / Coding Contest</h3><p>Add event name, year, and your role.</p></article>
+      <article class="card"><span class="meta">Leadership</span><h3>Organization Role</h3><p>Add your student org and position.</p></article>
+    </div>
+  </section>
+
+
+  <section id="skills">
+    <p class="tag">Mission Log 004</p>
+    <h2>Skillset</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Programming &amp; Web</h3>
+        <div class="bar-skill"><div><span>HTML5</span><span>85%</span></div><div class="track"><i style="width:85%"></i></div></div>
+        <div class="bar-skill"><div><span>CSS3</span><span>80%</span></div><div class="track"><i style="width:80%"></i></div></div>
+        <div class="bar-skill"><div><span>JavaScript</span><span>60%</span></div><div class="track"><i style="width:60%"></i></div></div>
+        <div class="bar-skill"><div><span>Python</span><span>55%</span></div><div class="track"><i style="width:55%"></i></div></div>
+        <div class="bar-skill"><div><span>Java / C++</span><span>50%</span></div><div class="track"><i style="width:50%"></i></div></div>
       </div>
-      <div class="hero-stats">
-        <div class="stat-box">
-          <strong>100%</strong>
-          <span>Vanilla JS Cart</span>
-        </div>
-        <div class="stat-box">
-          <strong>24/7</strong>
-          <span>LocalStorage Sync</span>
-        </div>
-        <div class="stat-box">
-          <strong>Fast</strong>
-          <span>Live Filter & Sort</span>
-        </div>
+      <div class="card">
+        <h3>Tools</h3>
+        <ul class="chips"><li>Git &amp; GitHub</li><li>VS Code</li><li>Figma</li><li>MySQL</li><li>Chrome DevTools</li></ul>
+        <h3 style="margin-top:1.5rem">Soft Skills</h3>
+        <ul class="chips"><li>Problem-Solving</li><li>Debugging Mindset</li><li>Team Collaboration</li><li>Time Management</li><li>Communication</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- Catalog Section -->
-  <main id="catalog" class="container section">
-    <div class="toolbar">
-      <div class="tabs" id="category-tabs">
-        <button class="tab active" data-cat="all">All Gear</button>
-        <button class="tab" data-cat="peripherals">Peripherals</button>
-        <button class="tab" data-cat="audio">Audio</button>
-        <button class="tab" data-cat="workspace">Workspace</button>
-      </div>
 
-      <select id="sort-select" class="sort-select" aria-label="Sort products">
-        <option value="default">Sort: Featured</option>
-        <option value="low-high">Price: Low to High</option>
-        <option value="high-low">Price: High to Low</option>
-      </select>
+  <section id="projects">
+    <p class="tag">Mission Log 005</p>
+    <h2>Projects &amp; Researches</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="meta">Web Project</span>
+        <h3>Personal Portfolio</h3>
+        <p><strong>Objective:</strong> Present my background, skills, and work in one responsive, accessible website.</p>
+        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        <a href="https://github.com/your-username/portfolio">Repository →</a>
+      </article>
+      <article class="card">
+        <span class="meta">Class Project</span>
+        <h3>Your Project Title <em>(edit)</em></h3>
+        <p><strong>Objective:</strong> Describe what problem it solves or what you learned.</p>
+        <p><strong>Tech:</strong> List languages, frameworks, tools</p>
+        <a href="#projects">Link or screenshot →</a>
+      </article>
+      <article class="card">
+        <span class="meta">Research / Capstone</span>
+        <h3>Optional Third Entry</h3>
+        <p><strong>Objective:</strong> Add a paper, game, or app you built.</p>
+        <p><strong>Tech:</strong> Technologies used</p>
+      </article>
     </div>
+  </section>
 
-    <!-- Products injected here via JavaScript -->
-    <div id="product-grid" class="product-grid"></div>
-    <p id="empty-msg" class="empty-msg hidden">No products match your search.</p>
-  </main>
 
-  <!-- Slide-Over Cart Drawer -->
-  <div id="cart-overlay" class="overlay hidden"></div>
-  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <button id="close-cart" class="close-btn">&times;</button>
+  <section id="values">
+    <p class="tag">Mission Log 006</p>
+    <h2>Work Ethics &amp; Core Values</h2>
+    <div class="card">
+      <ul class="clean values">
+        <li><strong>Punctuality:</strong> I respect deadlines and other people’s time.</li>
+        <li><strong>Adaptability:</strong> I stay calm when requirements or tools change.</li>
+        <li><strong>Clean code:</strong> I write readable, well-organized, commented code.</li>
+        <li><strong>Collaboration:</strong> I share knowledge, welcome feedback, and use version control.</li>
+        <li><strong>Continuous learning:</strong> I keep exploring new technologies and improving.</li>
+        <li><strong>Integrity:</strong> I own my work and my mistakes.</li>
+      </ul>
     </div>
+  </section>
+</main>
 
-    <div id="cart-items" class="cart-items">
-      <!-- Cart items injected via JS -->
-    </div>
 
-    <div class="cart-footer">
-      <div class="total-row">
-        <span>Total:</span>
-        <strong id="cart-total">₱0.00</strong>
-      </div>
-      <button id="checkout-btn" class="btn btn-primary full-width">Proceed to Checkout</button>
-      <p id="checkout-msg" class="checkout-msg"></p>
-    </div>
-  </aside>
+<footer>
+  <p>Contact: <a href="mailto:you@example.com">you@example.com</a> · <a href="https://github.com/your-username">GitHub</a></p>
+  <p>© 2026 Khristian · Built with HTML, CSS &amp; JS</p>
+</footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>CSIT Web Finals 2026 • Interactive E-Commerce Storefront</p>
-    </div>
-  </footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
