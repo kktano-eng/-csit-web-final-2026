@@ -1,166 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Khristian | Solar Archive Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<canvas id="stars" aria-hidden="true"></canvas>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Khristian Kyle Tano, BSIT student at the University of San Agustin, Iloilo City.">
 
+  <title>Khristian Kyle Tano | BSIT Student Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --ink: #14213d;
+      --muted: #596277;
+      --line: #e1ded5;
+      --accent: #0f766e;
+      --accent-ink: #ffffff;
+      --chip: #ecebe4;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0e1524;
+        --surface: #151e32;
+        --ink: #e9edf6;
+        --muted: #9ba5bb;
+        --line: #263250;
+        --accent: #4fd1c5;
+        --accent-ink: #08201e;
+        --chip: #1c2740;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0e1524;
+      --surface: #151e32;
+      --ink: #e9edf6;
+      --muted: #9ba5bb;
+      --line: #263250;
+      --accent: #4fd1c5;
+      --accent-ink: #08201e;
+      --chip: #1c2740;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 1rem/1.7 system-ui, sans-serif;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: .75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      overflow-x: auto;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    #theme {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      flex: none;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 3rem;
+      align-items: center;
+      padding: 4.5rem 0 3.5rem;
+    }
+
+    .hero .role {
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 .5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      line-height: 1.1;
+      margin: 0 0 1rem;
+      letter-spacing: -.02em;
+    }
+
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 56ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .btn.ghost {
+      color: var(--accent);
+    }
+
+    .portrait {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .portrait img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section.block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2.75rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 0 0 .25rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .entry {
+      padding-bottom: 1.5rem;
+    }
+
+    .entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .entry .when {
+      color: var(--accent);
+      font-size: .88rem;
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+
+    .chips {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .chips li {
+      background: var(--chip);
+      border-radius: 999px;
+      padding: .2rem .8rem;
+      font-size: .9rem;
+    }
+
+    .group-title {
+      font-size: .9rem;
+      color: var(--muted);
+      margin: 0 0 .5rem;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .card .label {
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .card dl {
+      margin: 0 0 1rem;
+    }
+
+    .card dt {
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: .6rem;
+    }
+
+    .card dd {
+      margin: 0;
+    }
+
+    .link {
+      word-break: break-all;
+      font-weight: 600;
+    }
+
+    .values {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: .9rem;
+    }
+
+    .values li {
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .values strong {
+      display: block;
+    }
+
+    .contact a {
+      font-weight: 600;
+    }
+
+    footer {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+        gap: 2rem;
+      }
+
+      .portrait {
+        max-width: 200px;
+        order: -1;
+      }
+
+      section.block {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
 
 <header>
   <div class="bar">
-    <a class="logo" href="#about">☉ KHRISTIAN</a>
-    <button id="menu" aria-expanded="false" aria-controls="nav">MENU</button>
-    <nav id="nav" aria-label="Main">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#academic">Academic</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#values">Values</a></li>
-      </ul>
+    <a class="logo" href="#top">Khristian Kyle Tano</a>
+
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#values">Values</a>
+      <a href="#contact">Contact</a>
     </nav>
+
+    <button id="theme" aria-label="Switch between light and dark theme">◐</button>
   </div>
 </header>
 
+<main id="top">
 
-<main>
-  <section id="about" class="hero">
+  <!-- HERO SECTION -->
+  <section class="hero">
     <div>
-      <div class="pwrap">
-        <div class="orbit"></div>
-        <div class="portrait">
-          <span aria-hidden="true">K</span>
-          <!-- Replace portrait.jpg with your photo file; K shows if it is missing -->
-          <img src="portrait.jpg" alt="Portrait of Khristian" onerror="this.remove()">
-        </div>
+      <p class="role">BSIT Student · Web Development</p>
+      <h1>Khristian Kyle Tano</h1>
+
+      <p class="lead">
+        I build clear, responsive websites and keep improving them
+        until they work well on every screen. Currently studying
+        Information Technology at the University of San Agustin,
+        Iloilo City.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
       </div>
-      <div class="sub">SUBJECT: KHRISTIAN // BSIT</div>
     </div>
-    <div>
-      <p class="tag">Mission Log 001 // Profile</p>
-      <h1>Hello, world.<br><span class="grad">I’m Khristian.</span></h1>
-      <p>I’m a BSIT student at the University of San Agustin in Iloilo City. I love making websites that look nice and are easy to use.</p>
-      <p>I start with an idea, plan how it will look, and then write the code. I keep fixing and improving it until it works well on phones and computers. When I find a bug, I don’t give up. I see it as a chance to learn something new.</p>
-      <p>Right now, I am learning more JavaScript and trying out game making in my free time. I like working with others, asking questions, and getting better every day. Welcome to my portfolio. It shows what I have learned so far and what I want to do next.</p>
-      <a class="cta" href="#projects">VIEW PROJECTS ↓</a>
+
+    <div class="portrait">
+      <span aria-hidden="true">KT</span>
+      <img src="portrait.jpg"
+           alt="Portrait of Khristian Kyle Tano"
+           onerror="this.remove()">
     </div>
   </section>
 
+  <!-- ABOUT SECTION -->
+  <section class="block" id="about">
+    <h2>About</h2>
 
-  <section id="academic">
-    <p class="tag">Mission Log 002</p>
-    <h2>Academic Background</h2>
-    <div class="timeline">
-      <article class="card">
-        <span class="meta">2022 – Present</span>
+    <div>
+      <p>
+        I’m a BSIT student at the University of San Agustin
+        in Iloilo City. I enjoy making websites that look
+        clean and are easy to use.
+      </p>
+
+      <p>
+        My process is simple: start with an idea, plan the design,
+        write the code, then test and refine it until it works
+        well on phones and computers. When I run into a bug,
+        I treat it as a chance to learn something new.
+      </p>
+
+      <p class="muted">
+        Right now I’m strengthening my JavaScript and experimenting
+        with game development in my free time. I like working
+        with others, asking questions, and improving a little
+        every day.
+      </p>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section class="block" id="education">
+    <h2>Education</h2>
+
+    <div>
+      <div class="entry">
+        <div class="when">2026-2027 – Present</div>
         <h3>Bachelor of Science in Information Technology</h3>
-        <p>University of San Agustin, Iloilo City · Expected graduation: 2026 <em>(edit)</em></p>
-      </article>
-      <article class="card">
-        <span class="meta">Senior High School</span>
-        <h3>Your SHS Track / Strand <em>(edit)</em></h3>
-        <p>Name of school · Year graduated</p>
-      </article>
-    </div>
-    <h3 style="margin-top:2rem">Relevant Coursework</h3>
-    <ul class="chips">
-      <li>Web Development</li><li>Programming Fundamentals</li><li>Data Structures</li>
-      <li>Database Management</li><li>Networking</li><li>Systems Analysis &amp; Design</li>
-    </ul>
-  </section>
-
-
-  <section id="achievements">
-    <p class="tag">Mission Log 003</p>
-    <h2>Notable Achievements</h2>
-    <div class="grid">
-      <article class="card"><span class="meta">Academic</span><h3>Dean’s Lister</h3><p>Replace with your honor and semester.</p></article>
-      <article class="card"><span class="meta">Certification</span><h3>freeCodeCamp: Responsive Web Design</h3><p>Replace with a course you completed.</p></article>
-      <article class="card"><span class="meta">Competition</span><h3>Hackathon / Coding Contest</h3><p>Add event name, year, and your role.</p></article>
-      <article class="card"><span class="meta">Leadership</span><h3>Organization Role</h3><p>Add your student org and position.</p></article>
-    </div>
-  </section>
-
-
-  <section id="skills">
-    <p class="tag">Mission Log 004</p>
-    <h2>Skillset</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Programming &amp; Web</h3>
-        <div class="bar-skill"><div><span>HTML5</span><span>85%</span></div><div class="track"><i style="width:85%"></i></div></div>
-        <div class="bar-skill"><div><span>CSS3</span><span>80%</span></div><div class="track"><i style="width:80%"></i></div></div>
-        <div class="bar-skill"><div><span>JavaScript</span><span>60%</span></div><div class="track"><i style="width:60%"></i></div></div>
-        <div class="bar-skill"><div><span>Python</span><span>55%</span></div><div class="track"><i style="width:55%"></i></div></div>
-        <div class="bar-skill"><div><span>Java / C++</span><span>50%</span></div><div class="track"><i style="width:50%"></i></div></div>
+        <p class="muted">
+          University of San Agustin, Iloilo City
+        </p>
       </div>
-      <div class="card">
-        <h3>Tools</h3>
-        <ul class="chips"><li>Git &amp; GitHub</li><li>VS Code</li><li>Figma</li><li>MySQL</li><li>Chrome DevTools</li></ul>
-        <h3 style="margin-top:1.5rem">Soft Skills</h3>
-        <ul class="chips"><li>Problem-Solving</li><li>Debugging Mindset</li><li>Team Collaboration</li><li>Time Management</li><li>Communication</li></ul>
+
+      <div class="entry">
+        <div class="when">Graduated 2026</div>
+        <h3>Senior High School, HUMSS Track</h3>
+        <p class="muted">Jaro National High School</p>
       </div>
-    </div>
-  </section>
 
+      <p class="group-title">Relevant coursework</p>
 
-  <section id="projects">
-    <p class="tag">Mission Log 005</p>
-    <h2>Projects &amp; Researches</h2>
-    <div class="grid">
-      <article class="card">
-        <span class="meta">Web Project</span>
-        <h3>Personal Portfolio</h3>
-        <p><strong>Objective:</strong> Present my background, skills, and work in one responsive, accessible website.</p>
-        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-        <a href="https://github.com/your-username/portfolio">Repository →</a>
-      </article>
-      <article class="card">
-        <span class="meta">Class Project</span>
-        <h3>Your Project Title <em>(edit)</em></h3>
-        <p><strong>Objective:</strong> Describe what problem it solves or what you learned.</p>
-        <p><strong>Tech:</strong> List languages, frameworks, tools</p>
-        <a href="#projects">Link or screenshot →</a>
-      </article>
-      <article class="card">
-        <span class="meta">Research / Capstone</span>
-        <h3>Optional Third Entry</h3>
-        <p><strong>Objective:</strong> Add a paper, game, or app you built.</p>
-        <p><strong>Tech:</strong> Technologies used</p>
-      </article>
-    </div>
-  </section>
-
-
-  <section id="values">
-    <p class="tag">Mission Log 006</p>
-    <h2>Work Ethics &amp; Core Values</h2>
-    <div class="card">
-      <ul class="clean values">
-        <li><strong>Punctuality:</strong> I respect deadlines and other people’s time.</li>
-        <li><strong>Adaptability:</strong> I stay calm when requirements or tools change.</li>
-        <li><strong>Clean code:</strong> I write readable, well-organized, commented code.</li>
-        <li><strong>Collaboration:</strong> I share knowledge, welcome feedback, and use version control.</li>
-        <li><strong>Continuous learning:</strong> I keep exploring new technologies and improving.</li>
-        <li><strong>Integrity:</strong> I own my work and my mistakes.</li>
+      <ul class="chips">
+        <li>Web Development</li>
+        <li>Programming Fundamentals</li>
+        <li>Data Structures</li>
+        <li>Database Management</li>
+        <li>Networking</li>
+        <li>Systems Analysis &amp; Design</li>
       </ul>
     </div>
   </section>
+
+  <!-- SKILLS SECTION -->
+  <section class="block" id="skills">
+    <h2>Skills</h2>
+
+    <div>
+      <p class="group-title">Programming &amp; web</p>
+      <ul class="chips">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>C++</li>
+      </ul>
+
+      <p class="group-title">Tools</p>
+      <ul class="chips">
+        <li>Git &amp; GitHub</li>
+        <li>VS Code</li>
+        <li>Figma</li>
+        <li>MySQL</li>
+        <li>Chrome DevTools</li>
+      </ul>
+
+      <p class="group-title">Professional skills</p>
+      <ul class="chips">
+        <li>Problem-solving</li>
+        <li>Debugging</li>
+        <li>Team collaboration</li>
+        <li>Time management</li>
+        <li>Communication</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section class="block" id="projects">
+    <h2>Projects</h2>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="label">Web project</div>
+        <h3>Personal Portfolio</h3>
+
+        <dl>
+          <dt>Objective</dt>
+          <dd>
+            Present my background, skills, and work in one
+            responsive, accessible website.
+          </dd>
+
+          <dt>Technologies</dt>
+          <dd>HTML, CSS, JavaScript</dd>
+        </dl>
+
+        <a class="link"
+           href="https://github.com/kktano-eng/-csit-web-final-2026"
+           target="_blank"
+           rel="noopener noreferrer">
+          View repository on GitHub ↗
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="label">Class project</div>
+        <h3>Nike Store Site</h3>
+
+        <dl>
+          <dt>Objective</dt>
+          <dd>
+            Present Nike products and contact information
+            on a simple website.
+          </dd>
+
+          <dt>Technologies</dt>
+          <dd>Google Sites</dd>
+        </dl>
+
+        <a class="link"
+           href="https://sites.google.com/usa.edu.ph/nike/products-contact"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit live site ↗
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="block" id="values">
+    <h2>Work ethics &amp; values</h2>
+
+    <ul class="values">
+      <li>
+        <strong>Punctuality</strong>
+        I respect deadlines and other people’s time.
+      </li>
+
+      <li>
+        <strong>Adaptability</strong>
+        I stay calm when requirements or tools change.
+      </li>
+
+      <li>
+        <strong>Clean code</strong>
+        I write readable, well-organized, commented code.
+      </li>
+
+      <li>
+        <strong>Collaboration</strong>
+        I share knowledge, welcome feedback, and use version control.
+      </li>
+
+      <li>
+        <strong>Continuous learning</strong>
+        I keep exploring new technologies and improving.
+      </li>
+
+      <li>
+        <strong>Integrity</strong>
+        I own my work and my mistakes.
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="block contact" id="contact">
+    <h2>Contact</h2>
+
+    <div>
+      <p>
+        Open to internships, collaborations, and web projects.
+        The best way to reach me is by email.
+      </p>
+
+      <p>
+        Email:
+        <a href="mailto:kktano@gmail.com">kktano@gmail.com</a>
+        <br>
+
+        GitHub:
+        <a href="https://github.com/kktano-eng"
+           target="_blank"
+           rel="noopener noreferrer">
+          github.com/kktano-eng
+        </a>
+      </p>
+    </div>
+  </section>
+
 </main>
 
-
 <footer>
-  <p>Contact: <a href="mailto:you@example.com">you@example.com</a> · <a href="https://github.com/your-username">GitHub</a></p>
-  <p>© 2026 Khristian · Built with HTML, CSS &amp; JS</p>
+  © 2026 Khristian Kyle Tano · Iloilo City, Philippines
 </footer>
 
+<!-- DARK MODE SCRIPT -->
+<script>
+  (function () {
+    const root = document.documentElement;
+    const themeButton = document.getElementById("theme");
 
-<script src="script.js"></script>
+    themeButton.addEventListener("click", function () {
+      const dark = root.getAttribute("data-theme") === "dark" ||
+        (!root.getAttribute("data-theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      root.setAttribute("data-theme", dark ? "light" : "dark");
+    });
+  })();
+</script>
+
 </body>
 </html>
