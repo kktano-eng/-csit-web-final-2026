@@ -1,138 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Khristian | BSIT Student & Web Developer</title>
-  <meta name="description" content="Portfolio of Khristian, a BSIT student at the University of San Agustin building responsive, accessible websites." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khristian | Solar Archive Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#projects">Skip to projects</a>
+<canvas id="stars" aria-hidden="true"></canvas>
 
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#top" class="brand">☉ Khristian</a>
-      <nav class="nav" aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">Journey</a>
-        <a href="#values">Values</a>
-      </nav>
-      <div class="header-actions">
-        <button id="theme-btn" class="icon-btn" aria-label="Switch color theme">◐</button>
-        <button id="contact-btn" class="cta-btn">Contact</button>
-      </div>
-    </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="sun" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div>
-          <span class="pill">BSIT student · University of San Agustin, Iloilo City</span>
-          <h1>I build websites that are clear, fast, and easy to use.</h1>
-          <p>I plan the layout, write the code, then keep fixing it until it works on phones and computers. Bugs are how I learn.</p>
-          <div class="btn-row">
-            <a href="#projects" class="btn btn-primary">See my projects</a>
-            <button class="btn btn-ghost" data-open-contact>Say hello</button>
-          </div>
-        </div>
-        <figure class="portrait">
-          <img src="portrait.jpg" alt="Portrait of Khristian" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'K'}))" />
-        </figure>
-      </div>
-    </section>
+<header>
+  <div class="bar">
+    <a class="logo" href="#about">☉ KHRISTIAN</a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">MENU</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academic">Academic</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#values">Values</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <section id="about" class="section container two-col">
-      <div>
-        <h2>About me</h2>
-        <p>I'm learning more JavaScript and trying game making in my free time. I like working with others, asking questions, and getting a little better every day.</p>
-        <p>This portfolio shows what I've learned so far and where I want to go next.</p>
-      </div>
-      <div>
-        <h3>Coursework</h3>
-        <ul id="coursework" class="chips"></ul>
-      </div>
-    </section>
 
-    <section id="skills" class="section container">
-      <h2>Skills</h2>
-      <p class="lead">Levels show how comfortable I am, not a score.</p>
-      <div class="toolbar">
-        <div class="tabs" data-group="skills" role="tablist" aria-label="Skill groups">
-          <button class="tab active" data-cat="all">All</button>
-          <button class="tab" data-cat="web">Web</button>
-          <button class="tab" data-cat="tools">Tools</button>
-          <button class="tab" data-cat="soft">People skills</button>
+<main>
+  <section id="about" class="hero">
+    <div>
+      <div class="pwrap">
+        <div class="orbit"></div>
+        <div class="portrait">
+          <span aria-hidden="true">K</span>
+          <!-- Replace portrait.jpg with your photo file; K shows if it is missing -->
+          <img src="portrait.jpg" alt="Portrait of Khristian" onerror="this.remove()">
         </div>
       </div>
-      <div id="skill-grid" class="grid grid-sm"></div>
-    </section>
+      <div class="sub">SUBJECT: KHRISTIAN // BSIT</div>
+    </div>
+    <div>
+      <p class="tag">Mission Log 001 // Profile</p>
+      <h1>Hello, world.<br><span class="grad">I’m Khristian.</span></h1>
+      <p>I’m a BSIT student at the University of San Agustin in Iloilo City. I love making websites that look nice and are easy to use.</p>
+      <p>I start with an idea, plan how it will look, and then write the code. I keep fixing and improving it until it works well on phones and computers. When I find a bug, I don’t give up. I see it as a chance to learn something new.</p>
+      <p>Right now, I am learning more JavaScript and trying out game making in my free time. I like working with others, asking questions, and getting better every day. Welcome to my portfolio. It shows what I have learned so far and what I want to do next.</p>
+      <a class="cta" href="#projects">VIEW PROJECTS ↓</a>
+    </div>
+  </section>
 
-    <section id="projects" class="section container">
-      <h2>Projects</h2>
-      <p class="lead">Things I've built for class and for practice.</p>
-      <div class="toolbar">
-        <div class="tabs" data-group="projects" aria-label="Project types">
-          <button class="tab active" data-cat="all">All</button>
-          <button class="tab" data-cat="Web">Web</button>
-          <button class="tab" data-cat="Design">Design</button>
-        </div>
-        <div class="tools">
-          <input id="search-input" type="search" placeholder="Search projects" aria-label="Search projects" />
-          <select id="sort-select" aria-label="Sort projects">
-            <option value="newest">Newest first</option>
-            <option value="az">A to Z</option>
-          </select>
-        </div>
+
+  <section id="academic">
+    <p class="tag">Mission Log 002</p>
+    <h2>Academic Background</h2>
+    <div class="timeline">
+      <article class="card">
+        <span class="meta">2022 – Present</span>
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p>University of San Agustin, Iloilo City · Expected graduation: 2026 <em>(edit)</em></p>
+      </article>
+      <article class="card">
+        <span class="meta">Senior High School</span>
+        <h3>Your SHS Track / Strand <em>(edit)</em></h3>
+        <p>Name of school · Year graduated</p>
+      </article>
+    </div>
+    <h3 style="margin-top:2rem">Relevant Coursework</h3>
+    <ul class="chips">
+      <li>Web Development</li><li>Programming Fundamentals</li><li>Data Structures</li>
+      <li>Database Management</li><li>Networking</li><li>Systems Analysis &amp; Design</li>
+    </ul>
+  </section>
+
+
+  <section id="achievements">
+    <p class="tag">Mission Log 003</p>
+    <h2>Notable Achievements</h2>
+    <div class="grid">
+      <article class="card"><span class="meta">Academic</span><h3>Dean’s Lister</h3><p>Replace with your honor and semester.</p></article>
+      <article class="card"><span class="meta">Certification</span><h3>freeCodeCamp: Responsive Web Design</h3><p>Replace with a course you completed.</p></article>
+      <article class="card"><span class="meta">Competition</span><h3>Hackathon / Coding Contest</h3><p>Add event name, year, and your role.</p></article>
+      <article class="card"><span class="meta">Leadership</span><h3>Organization Role</h3><p>Add your student org and position.</p></article>
+    </div>
+  </section>
+
+
+  <section id="skills">
+    <p class="tag">Mission Log 004</p>
+    <h2>Skillset</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Programming &amp; Web</h3>
+        <div class="bar-skill"><div><span>HTML5</span><span>85%</span></div><div class="track"><i style="width:85%"></i></div></div>
+        <div class="bar-skill"><div><span>CSS3</span><span>80%</span></div><div class="track"><i style="width:80%"></i></div></div>
+        <div class="bar-skill"><div><span>JavaScript</span><span>60%</span></div><div class="track"><i style="width:60%"></i></div></div>
+        <div class="bar-skill"><div><span>Python</span><span>55%</span></div><div class="track"><i style="width:55%"></i></div></div>
+        <div class="bar-skill"><div><span>Java / C++</span><span>50%</span></div><div class="track"><i style="width:50%"></i></div></div>
       </div>
-      <div id="project-grid" class="grid"></div>
-      <p id="empty-msg" class="empty hidden">No projects match that search. Try a shorter word.</p>
-    </section>
-
-    <section id="journey" class="section container">
-      <h2>Journey</h2>
-      <ol id="timeline" class="timeline"></ol>
-    </section>
-
-    <section id="values" class="section container">
-      <h2>How I work</h2>
-      <div id="value-grid" class="grid grid-sm"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Khristian · Built with HTML, CSS, and JavaScript</p>
+      <div class="card">
+        <h3>Tools</h3>
+        <ul class="chips"><li>Git &amp; GitHub</li><li>VS Code</li><li>Figma</li><li>MySQL</li><li>Chrome DevTools</li></ul>
+        <h3 style="margin-top:1.5rem">Soft Skills</h3>
+        <ul class="chips"><li>Problem-Solving</li><li>Debugging Mindset</li><li>Team Collaboration</li><li>Time Management</li><li>Communication</li></ul>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <div id="overlay" class="overlay hidden"></div>
-  <aside id="drawer" class="drawer" aria-hidden="true" aria-labelledby="drawer-title">
-    <div class="drawer-head">
-      <h2 id="drawer-title">Get in touch</h2>
-      <button id="close-drawer" class="icon-btn" aria-label="Close contact panel">&times;</button>
-    </div>
-    <div class="drawer-body">
-      <p>I'm open to internships, team projects, and feedback.</p>
-      <div id="contact-links" class="links"></div>
-      <form id="contact-form" class="hidden">
-        <label for="msg-name">Your name</label>
-        <input id="msg-name" required />
-        <label for="msg-text">Message</label>
-        <textarea id="msg-text" rows="4" required></textarea>
-        <button class="btn btn-primary full" type="submit">Open in my email app</button>
-      </form>
-      <p id="form-msg" class="form-msg" role="status"></p>
-    </div>
-  </aside>
 
-  <script src="script.js"></script>
+  <section id="projects">
+    <p class="tag">Mission Log 005</p>
+    <h2>Projects &amp; Researches</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="meta">Web Project</span>
+        <h3>Personal Portfolio</h3>
+        <p><strong>Objective:</strong> Present my background, skills, and work in one responsive, accessible website.</p>
+        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        <a href="https://github.com/your-username/portfolio">Repository →</a>
+      </article>
+      <article class="card">
+        <span class="meta">Class Project</span>
+        <h3>Your Project Title <em>(edit)</em></h3>
+        <p><strong>Objective:</strong> Describe what problem it solves or what you learned.</p>
+        <p><strong>Tech:</strong> List languages, frameworks, tools</p>
+        <a href="#projects">Link or screenshot →</a>
+      </article>
+      <article class="card">
+        <span class="meta">Research / Capstone</span>
+        <h3>Optional Third Entry</h3>
+        <p><strong>Objective:</strong> Add a paper, game, or app you built.</p>
+        <p><strong>Tech:</strong> Technologies used</p>
+      </article>
+    </div>
+  </section>
+
+
+  <section id="values">
+    <p class="tag">Mission Log 006</p>
+    <h2>Work Ethics &amp; Core Values</h2>
+    <div class="card">
+      <ul class="clean values">
+        <li><strong>Punctuality:</strong> I respect deadlines and other people’s time.</li>
+        <li><strong>Adaptability:</strong> I stay calm when requirements or tools change.</li>
+        <li><strong>Clean code:</strong> I write readable, well-organized, commented code.</li>
+        <li><strong>Collaboration:</strong> I share knowledge, welcome feedback, and use version control.</li>
+        <li><strong>Continuous learning:</strong> I keep exploring new technologies and improving.</li>
+        <li><strong>Integrity:</strong> I own my work and my mistakes.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+
+<footer>
+  <p>Contact: <a href="mailto:you@example.com">you@example.com</a> · <a href="https://github.com/your-username">GitHub</a></p>
+  <p>© 2026 Khristian · Built with HTML, CSS &amp; JS</p>
+</footer>
+
+
+<script src="script.js"></script>
 </body>
 </html>
